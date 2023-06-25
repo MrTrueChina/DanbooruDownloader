@@ -314,6 +314,8 @@ namespace DanbooruDownloader.Commands
         {
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
+
                 HttpResponseMessage response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
 
                 switch (response.StatusCode)

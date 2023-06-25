@@ -22,7 +22,10 @@ namespace DanbooruDownloader.Utilities
         {
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0");
+
                 string url = GetPostsUrl(startId, username, apikey);
+
                 string jsonString = await client.GetStringAsync(url);
 
                 JArray jsonArray = JArray.Parse(jsonString);
